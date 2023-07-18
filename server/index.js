@@ -8,6 +8,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path, { join } from "path";
 import { fileURLToPath } from "url";
+import { error } from "console";
+import {register} from "./controller/auth.js";
 
 /* CONFIGURATION - All configs + middleware */
 
@@ -34,4 +36,24 @@ const storage = multer.diskStorage({
     filename: function(req,file,cb){
         cb(null,file.originalname);
     }
-})
+});
+
+const upload = multer({ storage });
+
+/* ROUTES WITH FILES */
+
+app.post("/auth/register",upload.single("picture"),register); //it is middleware function. 
+
+
+
+
+/*MONGOOSE SETUP */
+
+const PORT = process.env.PORT || 6001; //6001 port is a backup. 
+mongoose
+.connect(process.env.MONGO_URL,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(()=>{
+    app.listen(PORT, ()=>console.log(`server Port: ${PORT}`));
+}).catch((error)=>console.log(`${error} !!! MongoDB  did not connect!`));
