@@ -8,6 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path, { join } from "path";
 import { fileURLToPath } from "url";
+import authRoutes from "./routes/auth.js";
 import { error } from "console";
 import {register} from "./controller/auth.js";
 
@@ -44,8 +45,8 @@ const upload = multer({ storage });
 
 app.post("/auth/register",upload.single("picture"),register); //it is middleware function. 
 
-
-
+/* ROUTERS */
+app.use("/auth",authRoutes);
 
 /*MONGOOSE SETUP */
 
