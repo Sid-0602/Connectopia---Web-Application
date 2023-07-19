@@ -67,6 +67,4 @@ mongoose
     useUnifiedTopology: true,
 }).then(()=>{
     app.listen(PORT, ()=>console.log(`server Port: ${PORT}`));
-
-    
 }).catch((error)=>console.log(`${error} !!! MongoDB  did not connect!`));
