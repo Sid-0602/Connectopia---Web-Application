@@ -15,7 +15,9 @@ import { error } from "console";
 import {register} from "./controller/auth.js";
 import { createPost } from "./controller/posts.js";
 import { verifyToken } from "./middleware/auth.js";
-
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import { users, posts } from "./data/index.js";
 
 /* CONFIGURATION - All configs + middleware */
 
@@ -65,4 +67,6 @@ mongoose
     useUnifiedTopology: true,
 }).then(()=>{
     app.listen(PORT, ()=>console.log(`server Port: ${PORT}`));
+
+    
 }).catch((error)=>console.log(`${error} !!! MongoDB  did not connect!`));
