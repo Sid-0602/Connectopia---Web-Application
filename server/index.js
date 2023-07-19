@@ -9,8 +9,13 @@ import morgan from "morgan";
 import path, { join } from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
+import postRoutes from "./routes/posts.js";
 import { error } from "console";
 import {register} from "./controller/auth.js";
+import { createPost } from "./controller/posts.js";
+import { verifyToken } from "./middleware/auth.js";
+
 
 /* CONFIGURATION - All configs + middleware */
 
@@ -44,9 +49,12 @@ const upload = multer({ storage });
 /* ROUTES WITH FILES */
 
 app.post("/auth/register",upload.single("picture"),register); //it is middleware function. 
+app.post('/posts',verifyToken,upload.single("picture"),createPost);
 
 /* ROUTERS */
 app.use("/auth",authRoutes);
+app.use('/users/userRoutes',userRoutes);
+app.use('/posts',postRoutes); 
 
 /*MONGOOSE SETUP */
 
