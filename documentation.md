@@ -6,7 +6,7 @@ The database schema for the webite is as follows. The entities are User, Post, F
 
 ![1689666070288](image/documentation/1689666070288.png)
 
-## Tech Stack and Functionality
+## Tech Stack and Functionality (Server)
 
 ### Express and NodeJS
 
@@ -97,7 +97,6 @@ Know more about mongoose: [OFFCIAL DOCUMENTATION](https://mongoosejs.com/docs/in
 
 The `versionKey` is a property set on each document when first created by Mongoose. This keys value contains the internal [revision](http://aaronheckmann.blogspot.com/2012/06/mongoose-v3-part-1-versioning.html) of the document. The `versionKey` option is a string that represents the path to use for versioning. The default is `__v`.
 
-
 ### Body Parser (body-parser)
 
 [Express](https://www.simplilearn.com/tutorials/nodejs-tutorial/what-is-express-js "Express") body-parser is an npm module used to process data sent in an HTTP request body. It provides four [express middleware](https://www.simplilearn.com/tutorials/express-js-tutorial/about-express-js-middleware "express middleware") for parsing JSON, Text, URL-encoded, and raw data sets over an HTTP request body. Before the target controller receives an incoming request, these middleware routines handle it.
@@ -108,15 +107,15 @@ The `versionKey` is a property set on each document when first created by Mongoo
 * Specifically in the context of a POST, PATCH, or PUT HTTP request where the information you want is contained in the body.
 * Using body-parser allows you to access req.body from within routes and use that data.
 
-#### Installations 
+#### Installations
 
-After installing express and creating a node env, install body-parser: 
+After installing express and creating a node env, install body-parser:
 
 ```sh
 $ npm install body-parser
 ```
 
-### Cors [Middleware] 
+### Cors [Middleware]
 
 CORS is a node.js package for providing a [Connect](http://www.senchalabs.org/connect/)/[Express](http://expressjs.com/) middleware that can be used to enable [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) with various options.
 
@@ -160,10 +159,12 @@ Helmet helps secure Express apps by setting HTTP response headers.
 * [`X-Powered-By`](https://www.npmjs.com/package/helmet#x-powered-by): Info about the web server. Removed because it could be used in simple attacks
 * [`X-XSS-Protection`](https://www.npmjs.com/package/helmet#x-xss-protection): Legacy header that tries to mitigate [XSS attacks](https://developer.mozilla.org/en-US/docs/Glossary/Cross-site_scripting), but makes things worse, so Helmet disables it.
 
-### Morgan [middleware] 
+### Morgan [middleware]
 
 HTTP request logger middleware for node.js
 
 #### API
 
 `var morgan = require('morgan')`
+
+## Tech Stack and Functionality (Client-Frontend)
